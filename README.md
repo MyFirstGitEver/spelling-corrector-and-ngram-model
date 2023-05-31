@@ -1,5 +1,8 @@
-# Model report
+# Model overview
+## Dataset 1: https://www.kaggle.com/datasets/bittlingmayer/spelling?select=aspell.txt
+## Dataset 2: Product.txt file generated from my database.
 
+## Model report:  
 - Spelling corrector report:
 
 test 1: 63.33333333333333 %  
