@@ -2,15 +2,14 @@
 
 - Spelling corrector report:
 
-test 1: 63.33333333333333 %
-test 2: 58.25 %
-test 3: 34.83992467043315 %
-test 5: 52.17922606924643 %
+test 1: 63.33333333333333 %  
+test 2: 58.25 %   
+test 3: 34.83992467043315 %   
+test 5: 52.17922606924643 %   
 
 - Searching model report:
 
-home stuff for decoration
-
+Query: home stuff for decoration   
 plant hanger for home (0)
 handcraft chinese style (0)
 ank tops for womens/girls (0)
@@ -22,8 +21,7 @@ women shoes (2)
 sneakers joggers shoes (2)
 loafers for men (2)
 
-apple phone
-
+Query: apple phone  
 iphone 9 (0)
 women shoulder bags (0)
 iphone x (1)
@@ -36,8 +34,7 @@ handcraft chinese style (3)
 women's shoes (3)
 
 
-I need a new shoes for my birthday
-
+Query: I need a new shoes for my birthday  
 samsung universe 9 (0)
 huawei p30 (0)
 women's shoes (0)
@@ -49,8 +46,7 @@ sneakers joggers shoes (0)
 loafers for men (0)
 formal offices shoes (0)
 
-Watches for parties
-
+Query: Watches for parties  
 waterproof leather brand watch (0)
 royal blue premium watch (0)
 leather strap skeleton watch (0)
@@ -62,7 +58,7 @@ golden watch pearls bracelet watch (0)
 stainless steel women (0)
 elegant female pearl earrings (0)
 
-Rin
+Query: Rin  
 silver ring set women (1)
 rose ring (1)
 rhinestone korean style open rings (1)
@@ -74,7 +70,7 @@ money heist printed summer t shirts (2)
 chain pin tassel earrings (2)
 iphone x (3)
 
-Lazptop
+Query: Lazptop  
 samsung galaxy book (1)
 microsoft surface laptop 4 (1)
 hp pavilion 15-dk1056wm (1)
@@ -86,7 +82,7 @@ women winter clothes (4)
 fashion magnetic wrist watch (4)
 fog scent xpressio perfume (5)
 
-Girll dresss and wathes
+Query: Girll dresss and wathes  
 ank tops for womens/girls (1)
 night suit (1)
 ladies multicolored dress (1)
@@ -98,7 +94,7 @@ women shoulder bags (1)
 handbag for girls (1)
 leather hand bag (1)
 
-Mafn waches
+Query: Mafn waches  
 
 brown perfume (1)
 fog scent xpressio perfume (1)
@@ -111,7 +107,7 @@ leather strap skeleton watch (1)
 stainless steel wrist watch (1)
 steel analog couple watches (1)
 
-Laamp for deccoraztiopn
+Query: Laamp for deccoraztiopn  
 
 3d embellishment art lamp (1)
 plant hanger for home (3)
