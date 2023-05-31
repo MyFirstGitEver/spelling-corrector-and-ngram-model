@@ -104,41 +104,43 @@ class EditTextAutoSuggestion {
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new
-                FileReader("D:\\Source code\\Outer data\\spelling\\test 1.txt"));
+//        BufferedReader reader = new BufferedReader(new
+//                FileReader("D:\\Source code\\Outer data\\spelling\\test 1.txt"));
+//
+//        String line;
+//        EditTextAutoSuggestion suggester = new EditTextAutoSuggestion(getDBData());
+//        Set<String> vocabulary = loadVocabulary();
+//
+//        int hit = 0;
+//        int total = 0;
+//
+//        while((line = reader.readLine()) != null) {
+//            int endCorrectWordIndex = line.indexOf(':');
+//            String correctWord = line.substring(0, endCorrectWordIndex);
+//
+//            String[] testWords = line.substring(endCorrectWordIndex + 2).split(" ");
+//
+//            for(String word : testWords) {
+//                KLargest<EditTextAutoSuggestion.Suggestion> largest =
+//                        suggester.spelling(word, vocabulary, 1, 3);
+//
+//                if(largest == null) {
+//                    continue;
+//                }
+//
+//                if(largest.getValueArray()[0].value.equals(correctWord)) {
+//                    hit++;
+//                }
+//            }
+//
+//            total += testWords.length;
+//        }
+//
+//        System.out.println((double) hit / total * 100 + " %");
+//
+//        reader.close();
 
-        String line;
-        EditTextAutoSuggestion suggester = new EditTextAutoSuggestion(getDBData());
-        Set<String> vocabulary = loadVocabulary();
-
-        int hit = 0;
-        int total = 0;
-
-        while((line = reader.readLine()) != null) {
-            int endCorrectWordIndex = line.indexOf(':');
-            String correctWord = line.substring(0, endCorrectWordIndex);
-
-            String[] testWords = line.substring(endCorrectWordIndex + 2).split(" ");
-
-            for(String word : testWords) {
-                KLargest<EditTextAutoSuggestion.Suggestion> largest =
-                        suggester.spelling(word, vocabulary, 1, 3);
-
-                if(largest == null) {
-                    continue;
-                }
-
-                if(largest.getValueArray()[0].value.equals(correctWord)) {
-                    hit++;
-                }
-            }
-
-            total += testWords.length;
-        }
-
-        System.out.println((double) hit / total * 100 + " %");
-
-        reader.close();
+        getDBData();
     }
 
     static void personalTest() throws IOException {
@@ -182,7 +184,9 @@ public class Main {
         scanner.close();
     }
 
-    static List<String> getDBData() {
+    static List<String> getDBData() throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter("./Product.txt"));
+
         List<String> data = new ArrayList<>();
 
         try{
@@ -199,6 +203,8 @@ public class Main {
 
                 String corpus = title + "\n" + des;
                 data.add(corpus);
+                writer.write(title + "\t" + des);
+                writer.newLine();
             }
 
             con.close();
@@ -207,6 +213,7 @@ public class Main {
             e.printStackTrace();
         }
 
+        writer.close();
         return data;
     }
 
