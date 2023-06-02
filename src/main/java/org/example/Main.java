@@ -1,10 +1,7 @@
 package org.example;
 
 import java.io.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.*;
 
 class EditTextAutoSuggestion {
@@ -102,45 +99,122 @@ class EditTextAutoSuggestion {
     }
 }
 
-public class Main {
-    public static void main(String[] args) throws IOException {
-//        BufferedReader reader = new BufferedReader(new
-//                FileReader("D:\\Source code\\Outer data\\spelling\\test 1.txt"));
-//
-//        String line;
-//        EditTextAutoSuggestion suggester = new EditTextAutoSuggestion(getDBData());
-//        Set<String> vocabulary = loadVocabulary();
-//
-//        int hit = 0;
-//        int total = 0;
-//
-//        while((line = reader.readLine()) != null) {
-//            int endCorrectWordIndex = line.indexOf(':');
-//            String correctWord = line.substring(0, endCorrectWordIndex);
-//
-//            String[] testWords = line.substring(endCorrectWordIndex + 2).split(" ");
-//
-//            for(String word : testWords) {
-//                KLargest<EditTextAutoSuggestion.Suggestion> largest =
-//                        suggester.spelling(word, vocabulary, 1, 3);
-//
-//                if(largest == null) {
-//                    continue;
-//                }
-//
-//                if(largest.getValueArray()[0].value.equals(correctWord)) {
-//                    hit++;
-//                }
-//            }
-//
-//            total += testWords.length;
-//        }
-//
-//        System.out.println((double) hit / total * 100 + " %");
-//
-//        reader.close();
+class Word {
+    public final int id;
+    public final double count;
 
-        getDBData();
+    public Word(int id, double count) {
+        this.id = id;
+        this.count = count;
+    }
+}
+
+public class Main {
+    static int maxVocab = 92756;
+    static int maxGram = 1332904;
+
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, IOException {
+        NGramUser user = new NGramUser(maxVocab);
+
+        System.out.println(user.silly("D:\\Source code\\Outer data\\n-gram\\corpus.txt"));
+
+        user.dispose();
+    }
+
+    private void simpleTest(NGramUser user) throws SQLException {
+        Scanner scanner = new Scanner(System.in);
+        String line;
+
+        while (!(line = scanner.nextLine()).equals("")) {
+            String nextPart = user.complete(line);
+            System.out.println(line.trim() + nextPart);
+        }
+    }
+
+    private void trainNGram() throws SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con= DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/NGram","root","mysqlisgreat2003");
+
+        PreparedStatement queryStatement = con.prepareStatement("SELECT * from raw_count Where gram_id = ?");
+        PreparedStatement insertStatement = con.prepareStatement("INSERT INTO log_prob VALUES(?, ?, ?)");
+
+        for(int i=838731;i<=maxGram;i++) {
+            System.out.println(i +"th gram being processed..." );
+
+            double total = 0;
+
+            queryStatement.setInt(1, i);
+            ResultSet result = queryStatement.executeQuery();
+            List<Word> counters = new ArrayList<>();
+
+            while(result.next()) {
+                total += result.getDouble("count");
+                counters.add(new Word(result.getInt("vocab_id"), result.getDouble("count")));
+            }
+
+            System.out.println("found " + counters.size() + " words followed by it!");
+            System.out.println("-------------------------------------------------------");
+
+            int timer = 0;
+            for(Word word : counters) {
+                insertStatement.setInt(1, word.id);
+                insertStatement.setInt(2, i);
+                insertStatement.setDouble(3, Math.log((word.count + 1) / (total + maxVocab)));
+                insertStatement.execute();
+
+                timer++;
+
+                if(timer % 300 == 0) {
+                    System.out.println(timer + " / " + counters.size() + " words processed!");
+                }
+            }
+
+            System.out.println(counters.size() + " words done!");
+
+            System.out.println("--------------------------------------------------------");
+            System.out.println(i + " / " +  maxGram + " grams processed\n");
+        }
+
+        con.close();
+    }
+
+    static void autoSuggestion() throws IOException {
+        BufferedReader reader = new BufferedReader(new
+                FileReader("D:\\Source code\\Outer data\\spelling\\test 1.txt"));
+
+        String line;
+        EditTextAutoSuggestion suggester = new EditTextAutoSuggestion(getDBData());
+        Set<String> vocabulary = loadVocabulary();
+
+        int hit = 0;
+        int total = 0;
+
+        while((line = reader.readLine()) != null) {
+            int endCorrectWordIndex = line.indexOf(':');
+            String correctWord = line.substring(0, endCorrectWordIndex);
+
+            String[] testWords = line.substring(endCorrectWordIndex + 2).split(" ");
+
+            for(String word : testWords) {
+                KLargest<EditTextAutoSuggestion.Suggestion> largest =
+                        suggester.spelling(word, vocabulary, 1, 3);
+
+                if(largest == null) {
+                    continue;
+                }
+
+                if(largest.getValueArray()[0].value.equals(correctWord)) {
+                    hit++;
+                }
+            }
+
+            total += testWords.length;
+        }
+
+        System.out.println((double) hit / total * 100 + " %");
+
+        reader.close();
     }
 
     static void personalTest() throws IOException {
