@@ -125,3 +125,79 @@ fog scent xpressio perfume (5)
 non-alcoholic concentrated perfume oil (5)
 
 - Ngram model with perplexity of 148.6
+- Some dummy examples to test it: 
+Please be
+Please be sure to check out the door and
+
+is very
+is very important to me
+
+More than 2 million people globally are diagnosed
+More than 2 million people globally are diagnosed with cancer and the other hand is very important to me
+
+Customers
+Customers have been a bit of
+
+The change
+The change in the world
+
+unmet need for both
+unmet need for both of them
+
+World hunger
+World hunger of spirit
+
+Take a 
+Take a look at the end of
+
+I cried so much
+I cried so much more than a few days ago i was
+
+he cried
+he cried in pain but i have to be a good thing
+
+I wish
+I wish i could have been a bit of
+
+he replies
+he replies when i was a little bit of
+
+Email
+Email me at the end of
+
+My feelings
+My feelings about it
+
+was conceived
+was conceived in and out of the most important thing is that
+
+Once again Charles Handy has put into beautiful words a message of hope
+
+Once again Charles Handy has put into beautiful words a message of hope and pray that you can see the world
+
+Don't complete your reading
+Don't complete your reading and writing about the same time i was a little bit of
+
+Take a break from time
+Take a break from time to get a chance
+
+yet faded away with your busy life
+yet faded away with your busy life as a result of the most important thing is that
+
+Doyle has his main characters discuss these
+Doyle has his main characters discuss these things are going to be a good thing i did not have
+
+Conan Doyle repeatedly said that Holmes was inspired
+Conan Doyle repeatedly said that Holmes was inspired by the time i was a little bit of
+
+A wound of
+A wound of course i had to be a good thing
+
+Bought some
+Bought some new friends and family
+
+my new car
+my new car and drove to the point of view
+
+Wild animal
+Wild animal appeared in the world
